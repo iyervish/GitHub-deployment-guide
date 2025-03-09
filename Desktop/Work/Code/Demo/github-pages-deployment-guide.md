@@ -113,4 +113,53 @@ npm run deploy
 ## Additional Resources
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [Create React App Deployment Guide](https://create-react-app.dev/docs/deployment/#github-pages)
-- [gh-pages npm package](https://www.npmjs.com/package/gh-pages) 
+- [gh-pages npm package](https://www.npmjs.com/package/gh-pages)
+
+## Understanding Branches and Deployment
+
+### Branch Structure
+Your repository has two important branches:
+1. `main` branch
+   - Contains your source code and development files
+   - Includes all files needed for development
+   - Where you do your daily development work
+
+2. `gh-pages` branch
+   - Contains only the production build
+   - Automatically managed by the gh-pages package
+   - What GitHub Pages actually serves to users
+
+### Deployment Workflow
+When deploying your changes, follow these steps:
+
+1. Save your source code to main branch:
+```bash
+# Ensure you're on main branch
+git checkout main
+
+# Add and commit your changes
+git add .
+git commit -m "Your commit message"
+
+# Push to GitHub
+git push origin main
+```
+
+2. Deploy to GitHub Pages:
+```bash
+# This will build your app and update the gh-pages branch
+npm run deploy
+```
+
+The `npm run deploy` command:
+- Builds your app (`npm run build`)
+- Creates/updates the gh-pages branch
+- Pushes built files to gh-pages branch
+- Updates your live site
+
+### Important Notes
+- Always make changes on the `main` branch
+- Never manually edit the `gh-pages` branch
+- The `gh-pages` branch is automatically managed
+- Your live site uses files from `gh-pages` branch
+- Your source code is preserved in `main` branch 
